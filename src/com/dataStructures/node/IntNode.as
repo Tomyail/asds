@@ -23,7 +23,7 @@ package com.dataStructures.node
             
             while(tempNode){
                 length ++;
-                tempNode = tempNode.link;
+                tempNode = tempNode._link;
             }
             return length;
         }
@@ -36,7 +36,7 @@ package com.dataStructures.node
                 if(tempNode.data == data){
                     return tempNode;
                 }
-                tempNode = tempNode.link;
+                tempNode = tempNode._link;
             }
             return null;
         }
@@ -48,7 +48,7 @@ package com.dataStructures.node
             
             while(tempNode){
                 if(tempNode.data == data) resultNodes.push(tempNode);
-                tempNode = tempNode.link;
+                tempNode = tempNode._link;
             }
             return resultNodes;
         }
@@ -58,19 +58,50 @@ package com.dataStructures.node
             var tempNode:IntNode = headNode;
             var index:int = 0;
             
-            if(position < 0){
+            if(position < 0 && tempNode){
                 return IntNode.getNodeByPosition(tempNode,IntNode.getLength(tempNode)+position)
             }
             while(tempNode){
                 if(index == position){
                     return tempNode;
                 }
-                tempNode = tempNode.link;
+                tempNode = tempNode._link;
                 index ++;
             }
             return null;
         }
         
+        /** 根据头节点复制一份链表 */
+        public static function clone(headNode:IntNode):IntNode{
+            var node:IntNode = new IntNode(tempNode.data);
+            var tempNode:IntNode = headNode._link;
+            
+            while(tempNode){
+                node.addNodeAfter(tempNode.data);
+                tempNode = tempNode._link;
+            }
+            
+            return node;
+        }
+        
+        public static function cloneWithTail(headNode:IntNode):Vector.<IntNode>{
+            var vec:Vector.<IntNode> = new Vector.<IntNode>(2,true);
+            
+            if(headNode == null)
+                return vec;
+            
+            var head:IntNode = new IntNode(headNode.data);
+            var tail:IntNode = head;
+            
+            while(tail.link){
+                headNode = headNode._link;
+                tail.addNodeAfter(headNode.data);
+                tail = tail.link;
+            }
+            vec[0] = head;
+            vec[1] = tail;
+            return vec;
+        }
         
         public function toString():String{
             return _data.toString();
@@ -89,7 +120,7 @@ package com.dataStructures.node
          */
         public function removeNodeAfter():void{
             if(_link != null)
-                _link = _link.link;
+                _link = _link._link;
         }
         /** 此节点的引用 */
         public function get link():IntNode
