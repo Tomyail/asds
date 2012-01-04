@@ -1,5 +1,7 @@
 package
 {
+    import com.dataStructures.stack.ArrayStack;
+    
     import flash.display.Sprite;
     
     import test.com.dataStructures.node.IntLinkBagTest;
@@ -11,6 +13,7 @@ package
         {
 //            var nodeTest:NodeTest = new NodeTest;
             var intLinkBag:IntLinkBagTest = new IntLinkBagTest();
+            var arrayStack:ArrayStack = new ArrayStack(10);
         }
     }
 }
