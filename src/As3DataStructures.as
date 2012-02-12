@@ -13,7 +13,20 @@ package
         {
 //            var nodeTest:NodeTest = new NodeTest;
             var intLinkBag:IntLinkBagTest = new IntLinkBagTest();
-            var arrayStack:ArrayStack = new ArrayStack(10);
+            
+            testArrayStack();
+        }
+        
+        private function testArrayStack():void
+        {
+            var arrayStack:ArrayStack = new ArrayStack(1);
+            arrayStack.push(1);
+            arrayStack.push(2);
+            arrayStack.ensureCapacity(20);
+            arrayStack.trimToSize();
+            trace(arrayStack.pop());
+            trace(arrayStack.pop());
+            trace(arrayStack.pop());
         }
     }
 }
