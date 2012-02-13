@@ -1,39 +1,49 @@
 package com.dataStructures.stack
 {
+    import com.dataStructures.node.IntNode;
+
     public class LinkedStack implements IStack
     {
+        private var _top:IntNode;
+        
         public function LinkedStack()
         {
+            _top = null;
         }
         
         public function isEmpty():Boolean
         {
-            // TODO Auto Generated method stub
-            return false;
+            return (_top == null);
         }
         
         public function peek():int
         {
-            // TODO Auto Generated method stub
-            return 0;
+            if(_top == null)
+            {
+                throw new Error("Stack is empty");
+            }
+            return _top.data;
         }
         
         public function pop():int
         {
-            // TODO Auto Generated method stub
-            return 0;
+            if(_top == null)
+            {
+                throw new Error("Stack is empty");
+            }
+            var result:int = _top.data;
+            _top = _top.link;
+            return result;
         }
         
         public function push(item:int):void
         {
-            // TODO Auto Generated method stub
-            
+            _top = new IntNode(item,_top);
         }
         
         public function size():int
         {
-            // TODO Auto Generated method stub
-            return 0;
+            return IntNode.getLength(_top);
         }
         
     }

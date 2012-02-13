@@ -1,6 +1,7 @@
 package
 {
     import com.dataStructures.stack.ArrayStack;
+    import com.dataStructures.stack.LinkedStack;
     
     import flash.display.Sprite;
     
@@ -14,7 +15,22 @@ package
 //            var nodeTest:NodeTest = new NodeTest;
             var intLinkBag:IntLinkBagTest = new IntLinkBagTest();
             
-            testArrayStack();
+//            testArrayStack();
+            testLinkedStack();
+        }
+        
+        private function testLinkedStack():void
+        {
+            var linkStack:LinkedStack = new LinkedStack();
+//            linkStack.peek();
+            linkStack.push(1);
+            linkStack.push(2);
+            trace(linkStack.size());
+            trace(linkStack.isEmpty());
+            trace(linkStack.peek());
+            trace(linkStack.pop());
+            trace(linkStack.pop());
+//            trace(linkStack.pop());
         }
         
         private function testArrayStack():void
