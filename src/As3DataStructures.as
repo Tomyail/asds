@@ -1,5 +1,6 @@
 package
 {
+    import com.dataStructures.queue.ArrayQueue;
     import com.dataStructures.stack.ArrayStack;
     import com.dataStructures.stack.LinkedStack;
     
@@ -16,7 +17,21 @@ package
             var intLinkBag:IntLinkBagTest = new IntLinkBagTest();
             
 //            testArrayStack();
-            testLinkedStack();
+//            testLinkedStack();
+            testArrayQueue();
+        }
+        
+        private function testArrayQueue():void
+        {
+            var arrayQueue:ArrayQueue = new ArrayQueue(1);
+            arrayQueue.add(1);
+            arrayQueue.add(2);
+            arrayQueue.add(3);
+            trace(arrayQueue.remove());
+            arrayQueue.add(4);
+            arrayQueue.ensureCapacity(10);
+            trace(arrayQueue.remove());
+            trace(arrayQueue.remove());
         }
         
         private function testLinkedStack():void
