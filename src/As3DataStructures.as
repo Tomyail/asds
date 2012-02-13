@@ -1,6 +1,7 @@
 package
 {
     import com.dataStructures.queue.ArrayQueue;
+    import com.dataStructures.queue.LinkedQueue;
     import com.dataStructures.stack.ArrayStack;
     import com.dataStructures.stack.LinkedStack;
     
@@ -18,7 +19,22 @@ package
             
 //            testArrayStack();
 //            testLinkedStack();
-            testArrayQueue();
+//            testArrayQueue();
+            testLinkedQueue();
+        }
+        
+        private function testLinkedQueue():void
+        {
+            var linkedQueue:LinkedQueue = new LinkedQueue();
+            linkedQueue.add(1);
+            linkedQueue.add(2);
+            linkedQueue.add(3);
+            trace(linkedQueue.remove());
+            linkedQueue.add(4);
+            trace(linkedQueue.remove());
+            trace(linkedQueue.remove());
+            trace(linkedQueue.remove());
+            trace(linkedQueue.remove());
         }
         
         private function testArrayQueue():void
@@ -29,7 +45,6 @@ package
             arrayQueue.add(3);
             trace(arrayQueue.remove());
             arrayQueue.add(4);
-            arrayQueue.ensureCapacity(10);
             trace(arrayQueue.remove());
             trace(arrayQueue.remove());
         }
