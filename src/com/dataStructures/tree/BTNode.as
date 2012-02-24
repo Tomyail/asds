@@ -1,5 +1,7 @@
 package com.dataStructures.tree
 {
+    import com.dataStructures.node.IntNode;
+
     public class BTNode
     {
         private var _data:int;
@@ -9,7 +11,7 @@ package com.dataStructures.tree
         
         /**
          * 初始化一个指定了初始数据和左右孩子额连接节点 
-         * @param initialData 初始数据
+         * @param initialData 初始数据KMNV
          * @param initialLeft 左孩子
          * @param initialRight 右孩子
          */
@@ -27,43 +29,85 @@ package com.dataStructures.tree
         
         /** 从本节点开始取得树的最左节点的数据*/
         public function getLeftMostData():int{
-            
+            if(_left == null)
+                return _data;
+            return _left.getLeftMostData();
         }
         
         /** 从本节点开始取得树的最右节点的数据*/
         public function getRightMostData():int{
-            
+            if(_right == null)
+                return _data;
+            return _right.getRightMostData();
         }
         
         /** 删除以该节点为根节点的树的最左节点*/
-        public function removeLeftMost():int{
-            
+        public function removeLeftMost():BTNode{
+            if(_left == null)
+            {
+                return _right;
+            }
+            else
+            {
+                _left = _left.removeLeftMost();
+                return this;
+            }
         }
         
         /** 删除以该节点为根节点的树的最右节点*/
-        public function removeRightMost():int{
-            
+        public function removeRightMost():BTNode{
+            if(_right == null)
+            {
+                return _left;
+            }
+            else
+            {
+                _right = _right.removeRightMost();
+                return this;
+            }
         }
         
         /** 复制二叉树*/
         public static function treeCopy(source:BTNode):BTNode{
-            
+            var leftNode:BTNode,rightNode:BTNode;
+            if(source == null)
+            {
+                return null;
+            }
+            else
+            {
+                leftNode = treeCopy(source.left);
+                rightNode = treeCopy(source.right);
+                return new BTNode(source.data,leftNode,rightNode);
+            }
         }
         
         
         /** 前序号遍历*/
         public  function preorderPrint():void{
-            
+            trace(_data);
+            if(_left!=null)
+                _left.preorderPrint();
+            if(_right!=null)
+                _right.preorderPrint();
         }
         
         /** 中序遍历*/
         public function inorderPrint():void{
-            
+            if(_left!=null)
+                _left.inorderPrint();
+            trace(_data);
+            if(_right!=null)
+                _right.inorderPrint();
         }
         
         /** 后序遍历*/
         public function postorderPrint():void{
-            
+            if(_left!=null)
+                _left.postorderPrint();
+            if(_right!=null)
+                _right.postorderPrint();
+            trace(_data);
         }
         
         /**
