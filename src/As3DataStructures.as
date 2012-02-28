@@ -1,5 +1,7 @@
 package
 {
+    import com.dataStructures.graph.Graph;
+    import com.dataStructures.graph.GraphRecurse;
     import com.dataStructures.queue.ArrayQueue;
     import com.dataStructures.queue.LinkedQueue;
     import com.dataStructures.stack.ArrayStack;
@@ -20,7 +22,51 @@ package
 //            testArrayStack();
 //            testLinkedStack();
 //            testArrayQueue();
-            testLinkedQueue();
+//            testLinkedQueue();
+//            testGraph();
+            testGraphRecurse();
+        }
+        
+        private function testGraphRecurse():void
+        {
+            var graph:Graph = new Graph(10);
+            graph.addEdge(0,3);
+            graph.addEdge(0,1);
+            graph.addEdge(3,1);
+            graph.addEdge(3,2);
+            graph.addEdge(1,2);
+            graph.addEdge(1,4);
+            graph.addEdge(4,5);
+            graph.addEdge(4,7);
+            graph.addEdge(7,8);
+            graph.addEdge(8,9);
+            graph.addEdge(3,7);
+            graph.addEdge(3,8);
+            graph.addEdge(5,6);
+            graph.addEdge(2,6);
+            graph.setData(0,0);
+            graph.setData(3,3);
+            graph.setData(1,1);
+            graph.setData(2,2);
+            graph.setData(4,4);
+            graph.setData(5,5);
+            graph.setData(6,6);
+            
+            var marked:Vector.<Boolean> = new Vector.<Boolean>(graph.size());
+            trace("deep")
+            GraphRecurse.deepFirstRecurse(graph,0,marked);
+            trace("breadth")
+            var mark2:Vector.<Boolean> = new Vector.<Boolean>(graph.size());
+            GraphRecurse.breadthFirstRecurse(graph,0,mark2);
+            
+        }
+        
+        private function testGraph():void
+        {
+            var graph:Graph = new Graph(10);
+            trace(graph.isEdge(1,1));
+            trace(graph.addEdge(0,0));
+            trace(graph.isEdge(0,0));
         }
         
         private function testLinkedQueue():void

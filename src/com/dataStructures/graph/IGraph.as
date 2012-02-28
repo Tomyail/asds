@@ -15,7 +15,7 @@ package com.dataStructures.graph
          */
         function addEdge(source:int,target:int):void;
         /** 测试一条边是否已经存在*/
-        function isEdge(source:int,target:int):void;
+        function isEdge(source:int,target:int):Boolean;
         /** 删除一条边*/
         function removeEdge(source:int,target:int):void;
         /** 获取指定顶点的领接顶点列表*/
