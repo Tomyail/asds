@@ -42,7 +42,7 @@ package
             graph.addEdge(7,8);
             graph.addEdge(8,9);
             graph.addEdge(3,7);
-            graph.addEdge(3,8);
+//            graph.addEdge(3,8);
             graph.addEdge(5,6);
             graph.addEdge(2,6);
             graph.setData(0,0);
@@ -54,15 +54,16 @@ package
             graph.setData(6,6);
             
             var d:Dijkstra = new Dijkstra();
-            d.calcute(graph,3);
+            d.calcute(graph,0,true);
             trace(d.distance);
+            trace(d.getPath(9));
             
-            var marked:Vector.<Boolean> = new Vector.<Boolean>(graph.size());
-            trace("deep")
-            GraphRecurse.deepFirstRecurse(graph,0,marked);
-            trace("breadth")
-            var mark2:Vector.<Boolean> = new Vector.<Boolean>(graph.size());
-            GraphRecurse.breadthFirstRecurse(graph,0,mark2);
+//            var marked:Vector.<Boolean> = new Vector.<Boolean>(graph.size());
+//            trace("deep")
+//            GraphRecurse.deepFirstRecurse(graph,0,marked);
+//            trace("breadth")
+//            var mark2:Vector.<Boolean> = new Vector.<Boolean>(graph.size());
+//            GraphRecurse.breadthFirstRecurse(graph,0,mark2);
             
         }
         
