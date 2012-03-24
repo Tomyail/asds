@@ -12,8 +12,9 @@ package com.dataStructures.graph
          * 增加一条边 
          * @param source 起始顶点编号
          * @param target 目标顶点编号
+         * @param weight 权重
          */
-        function addEdge(source:int,target:int):void;
+        function addEdge(source:int,target:int,weight:Number=1):void;
         /** 测试一条边是否已经存在*/
         function isEdge(source:int,target:int):Boolean;
         /** 删除一条边*/
