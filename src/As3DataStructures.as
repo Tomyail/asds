@@ -1,5 +1,6 @@
 package
 {
+    import com.dataStructures.graph.Dijkstra;
     import com.dataStructures.graph.Graph;
     import com.dataStructures.graph.GraphRecurse;
     import com.dataStructures.queue.ArrayQueue;
@@ -29,7 +30,7 @@ package
         
         private function testGraphRecurse():void
         {
-            var graph:Graph = new Graph(10);
+            var graph:Graph = new Graph(10,false);
             graph.addEdge(0,3);
             graph.addEdge(0,1);
             graph.addEdge(3,1);
@@ -51,6 +52,10 @@ package
             graph.setData(4,4);
             graph.setData(5,5);
             graph.setData(6,6);
+            
+            var d:Dijkstra = new Dijkstra();
+            d.calcute(graph,3);
+            trace(d.distance);
             
             var marked:Vector.<Boolean> = new Vector.<Boolean>(graph.size());
             trace("deep")
